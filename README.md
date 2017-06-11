@@ -56,3 +56,5 @@ A C# window game for Final Project
 長完的字母X: 0051
 長完的字母Y: 0052
 長完的字母Z: 0053
+
+# Item ID list:
