@@ -21,7 +21,6 @@ namespace Plant_Word
         /**********main_window***********/
         int[] pot = new int[12];                //記錄花盆內容
         Button[] pot_btn = new Button[12];      //顯示花盆內容
-        /***************************/
 
         public Form1()
         {
@@ -118,7 +117,7 @@ namespace Plant_Word
         /********商店被點擊*********/
         private void Store_Click(object sender, EventArgs e)
         {
-
+            store_form.ShowDialog();
         }
 
         /********任務被點擊*********/
