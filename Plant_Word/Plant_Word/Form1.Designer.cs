@@ -60,6 +60,7 @@
             this.Quest.TabIndex = 2;
             this.Quest.Text = "任務";
             this.Quest.UseVisualStyleBackColor = true;
+            this.Quest.Click += new System.EventHandler(this.Quest_Click);
             // 
             // Item
             // 
@@ -71,6 +72,7 @@
             this.Item.TabIndex = 3;
             this.Item.Text = "道具";
             this.Item.UseVisualStyleBackColor = true;
+            this.Item.Click += new System.EventHandler(this.Item_Click);
             // 
             // Achievement
             // 
@@ -82,6 +84,7 @@
             this.Achievement.TabIndex = 4;
             this.Achievement.Text = "成就";
             this.Achievement.UseVisualStyleBackColor = true;
+            this.Achievement.Click += new System.EventHandler(this.Achievement_Click);
             // 
             // flowLayoutPanel2
             // 
