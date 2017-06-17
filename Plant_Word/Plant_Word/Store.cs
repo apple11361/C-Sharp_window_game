@@ -130,10 +130,16 @@ namespace Plant_Word
             }
 
             /************load money*************/
-            money.Height = 15;
-            money.Width = 100;
-            money.Location = new Point(5, 5);
+            FontFamily fm = new FontFamily("微軟正黑體");
+            Font f = new Font(fm, 13, FontStyle.Regular);
+
+            money.Height = 25;
+            money.Width = 200;
+            money.Location = new Point(730, 690);
+            money.Font = f;
             money.Text = "目前擁有金錢：" + ((Form1)(this.Owner)).money.ToString();
+            this.Controls.Add(money);
+
         }
 
 
