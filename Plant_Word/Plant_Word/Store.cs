@@ -16,7 +16,11 @@ namespace Plant_Word
         Panel[] store_panel = new Panel[26];
         Button[] store_btn = new Button[26];
         Label[,] store_label = new Label[26, 2];
-        
+        Panel[] item_panel = new Panel[26];
+        Label[] item_image = new Label[26];
+        Label[,] item_label = new Label[26, 2];
+        Label money = new Label();
+
         public Store()
         {
             InitializeComponent();
@@ -31,14 +35,16 @@ namespace Plant_Word
         {
             int i;
 
+            /**********************************store**********************************/
             /************load panel*************/
-            for(i = 0; i < 26; i++)
+            for (i = 0; i < 26; i++)
             {
                 store_panel[i] = new Panel();
                 store_panel[i].Height = 90;
                 store_panel[i].Width = 200;
                 store_panel[i].BackColor = SystemColors.AppWorkspace;
-                store_panel[i].Location = new Point(15 + i / 2 * 140, 340 + i % 2 * 110);
+                store_panel[i].MouseEnter += flowLayoutPanel1_MouseEnter;
+                //store_panel[i].Location = new Point(15 + i / 2 * 140, 340 + i % 2 * 110);
                 flowLayoutPanel1.Controls.Add(store_panel[i]);
             }
 
@@ -75,6 +81,71 @@ namespace Plant_Word
                 store_label[i, 1].Text = "200元";
                 store_panel[i].Controls.Add(store_label[i, 1]);
             }
+
+            /**********************************item**********************************/
+            /************load panel*************/
+            for (i = 0; i < 26; i++)
+            {
+                item_panel[i] = new Panel();
+                item_panel[i].Height = 90;
+                item_panel[i].Width = 200;
+                item_panel[i].BackColor = SystemColors.AppWorkspace;
+                item_panel[i].MouseEnter += flowLayoutPanel2_MouseEnter;
+                //item_panel[i].Location = new Point(15 + i / 2 * 140, 340 + i % 2 * 110);
+                flowLayoutPanel2.Controls.Add(item_panel[i]);
+            }
+
+            /************load image*************/
+            for (i = 0; i < 26; i++)
+            {
+                item_image[i] = new Label();
+                item_image[i].Height = 70;
+                item_image[i].Width = 70;
+                item_image[i].Location = new Point(9, 9);
+                item_image[i].BackColor = Color.Transparent;
+                item_image[i].Image = ((Form1)this.Owner).item_img[0];
+                item_image[i].FlatStyle = FlatStyle.Popup;
+                item_image[i].Name = i.ToString();
+                //store_btn[i].Click += new EventHandler(store_btn_Click);
+                item_panel[i].Controls.Add(item_image[i]);
+            }
+
+            /************load label*************/
+            for (i = 0; i < 26; i++)
+            {
+                item_label[i, 0] = new Label();
+                item_label[i, 1] = new Label();
+
+                item_label[i, 0].Height = 15;
+                item_label[i, 0].Width = 100;
+                item_label[i, 0].Location = new Point(90, 25);
+                item_label[i, 0].Text = "道具名稱";
+                item_panel[i].Controls.Add(item_label[i, 0]);
+
+                item_label[i, 1].Height = 15;
+                item_label[i, 1].Width = 100;
+                item_label[i, 1].Location = new Point(90, 50);
+                item_label[i, 1].Text = "數量";
+                item_panel[i].Controls.Add(item_label[i, 1]);
+            }
+
+            /************load money*************/
+            money.Height = 15;
+            money.Width = 100;
+            money.Location = new Point(5, 5);
+            money.Text = "目前擁有金錢：" + ((Form1)(this.Owner)).money.ToString();
+        }
+
+
+        /******************for scroll bar****************/
+        private void flowLayoutPanel1_MouseEnter(object sender, EventArgs e)
+        {
+            flowLayoutPanel1.Focus();
+        }
+
+        private void flowLayoutPanel2_MouseEnter(object sender, EventArgs e)
+        {
+            flowLayoutPanel2.Focus();
         }
     }
 }

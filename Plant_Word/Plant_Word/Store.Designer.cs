@@ -38,17 +38,21 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(58, 142);
+            this.flowLayoutPanel1.CausesValidation = false;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(60, 140);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(440, 537);
             this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.MouseEnter += new System.EventHandler(this.flowLayoutPanel1_MouseEnter);
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(522, 142);
+            this.flowLayoutPanel2.AutoScroll = true;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(520, 140);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(440, 537);
             this.flowLayoutPanel2.TabIndex = 1;
+            this.flowLayoutPanel2.MouseEnter += new System.EventHandler(this.flowLayoutPanel2_MouseEnter);
             // 
             // label1
             // 

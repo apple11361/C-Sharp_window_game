@@ -19,6 +19,7 @@ namespace Plant_Word
         Store store_form = new Store();         //商店視窗
 
         /**********main_window***********/
+        public
         int money;                              //金錢
         int[] pot = new int[12];                //記錄花盆內容
         Button[] pot_btn = new Button[12];      //顯示花盆內容
