@@ -29,14 +29,10 @@
         private void InitializeComponent()
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -81,6 +77,10 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -116,43 +116,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(440, 537);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(522, 142);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(440, 537);
-            this.flowLayoutPanel2.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微軟正黑體", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.Location = new System.Drawing.Point(455, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 47);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "商 店";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label2.Location = new System.Drawing.Point(205, 99);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 36);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "商店道具";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label3.Location = new System.Drawing.Point(681, 99);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 36);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "道具欄";
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.AppWorkspace;
@@ -164,14 +127,14 @@
             this.panel1.Size = new System.Drawing.Size(200, 88);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // label5
             // 
-            this.button1.Location = new System.Drawing.Point(4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(80, 80);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(154, 56);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(33, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "label5";
             // 
             // label4
             // 
@@ -182,14 +145,14 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "label4";
             // 
-            // label5
+            // button1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(154, 56);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 12);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "label5";
+            this.button1.Location = new System.Drawing.Point(4, 4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(80, 80);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -608,6 +571,43 @@
             this.button12.TabIndex = 0;
             this.button12.Text = "button12";
             this.button12.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(522, 142);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(440, 537);
+            this.flowLayoutPanel2.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.Location = new System.Drawing.Point(455, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(103, 47);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "商 店";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label2.Location = new System.Drawing.Point(205, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(131, 36);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "商店道具";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微軟正黑體", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label3.Location = new System.Drawing.Point(681, 99);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(102, 36);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "道具欄";
             // 
             // Store
             // 
