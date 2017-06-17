@@ -12,16 +12,17 @@ namespace Plant_Word
 {
     public partial class Form1 : Form
     {
-        private
+        public
+        Image[] item_img = new Image[1000];     //所有道具圖片
+
         Item item_form = new Item();            //道具欄視窗
         Store store_form = new Store();         //商店視窗
 
-        Image[] item_img = new Image[1000];    //所有道具圖片
-
         /**********main_window***********/
+        public
+        int money;                              //金錢
         int[] pot = new int[12];                //記錄花盆內容
         Button[] pot_btn = new Button[12];      //顯示花盆內容
-        /***************************/
 
         public Form1()
         {
@@ -111,14 +112,15 @@ namespace Plant_Word
             item_img[52] = Image.FromFile("../../images/item/y2.png");
             item_img[53] = Image.FromFile("../../images/item/z2.png");
 
-
+            /*************load data*************/
+            money = 5000;
 
         }
 
         /********商店被點擊*********/
         private void Store_Click(object sender, EventArgs e)
         {
-
+            store_form.ShowDialog();
         }
 
         /********任務被點擊*********/
