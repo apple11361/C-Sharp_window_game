@@ -18,8 +18,10 @@ namespace Plant_Word
 
         Image[] item_img = new Image[1000];    //所有道具圖片
 
+        /**********main_window***********/
         int[] pot = new int[12];                //記錄花盆內容
         Button[] pot_btn = new Button[12];      //顯示花盆內容
+        /***************************/
 
         public Form1()
         {
@@ -82,7 +84,34 @@ namespace Plant_Word
             item_img[25] = Image.FromFile("../../images/item/x1.png");
             item_img[26] = Image.FromFile("../../images/item/y1.png");
             item_img[27] = Image.FromFile("../../images/item/z1.png");
-            
+            item_img[28] = Image.FromFile("../../images/item/a2.png");
+            item_img[29] = Image.FromFile("../../images/item/b2.png");
+            item_img[30] = Image.FromFile("../../images/item/c2.png");
+            item_img[31] = Image.FromFile("../../images/item/d2.png");
+            item_img[32] = Image.FromFile("../../images/item/e2.png");
+            item_img[33] = Image.FromFile("../../images/item/f2.png");
+            item_img[34] = Image.FromFile("../../images/item/g2.png");
+            item_img[35] = Image.FromFile("../../images/item/h2.png");
+            item_img[36] = Image.FromFile("../../images/item/i2.png");
+            item_img[37] = Image.FromFile("../../images/item/j2.png");
+            item_img[38] = Image.FromFile("../../images/item/k2.png");
+            item_img[39] = Image.FromFile("../../images/item/l2.png");
+            item_img[40] = Image.FromFile("../../images/item/m2.png");
+            item_img[41] = Image.FromFile("../../images/item/n2.png");
+            item_img[42] = Image.FromFile("../../images/item/o2.png");
+            item_img[43] = Image.FromFile("../../images/item/p2.png");
+            item_img[44] = Image.FromFile("../../images/item/q2.png");
+            item_img[45] = Image.FromFile("../../images/item/r2.png");
+            item_img[46] = Image.FromFile("../../images/item/s2.png");
+            item_img[47] = Image.FromFile("../../images/item/t2.png");
+            item_img[48] = Image.FromFile("../../images/item/u2.png");
+            item_img[49] = Image.FromFile("../../images/item/v2.png");
+            item_img[50] = Image.FromFile("../../images/item/w2.png");
+            item_img[51] = Image.FromFile("../../images/item/x2.png");
+            item_img[52] = Image.FromFile("../../images/item/y2.png");
+            item_img[53] = Image.FromFile("../../images/item/z2.png");
+
+
 
         }
 
