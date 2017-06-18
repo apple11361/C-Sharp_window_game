@@ -22,8 +22,9 @@ namespace Plant_Word
         /**********main_window***********/
         public int money;                                   //金錢
         public int[] my_item = new int[100];                //擁有道具列表
-        int[] pot = new int[12];                            //記錄花盆內容
+        public int[] pot = new int[12];                     //記錄花盆內容
         Button[] pot_btn = new Button[12];                  //顯示花盆內容
+        public int item_click_flag = -1;                    //看看是否是從花盆觸發道具欄的
 
         public Form1()
         {
@@ -175,13 +176,39 @@ namespace Plant_Word
         {
             if(pot[int.Parse(((Button)sender).Name)] == 0)
             {
+                item_click_flag = int.Parse(((Button)sender).Name);
                 item_form.ShowDialog();
+                item_click_flag = -1;
             }
         }
 
         private void Achievement_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void fresh_pot()
+        {
+            int i;
+
+            for(i = 0; i < 12; i++)
+            {
+                if(pot[i]!=0)                               //有種東西，判斷現在狀態
+                {
+                    if(pot[i]>=2 && pot[i]<=27)             //種子狀態
+                    {
+                        pot_btn[i].Image = item_img[1];
+                    }
+                    else if(pot[i] >= 28 && pot[i] <= 53)   //長一半狀態
+                    {
+                        pot_btn[i].Image = item_img[pot[i] - 26];
+                    }
+                    else if(pot[i] >= 54 && pot[i] <= 79)   //長完
+                    {
+                        pot_btn[i].Image = item_img[pot[i] - 26];
+                    }
+                }
+            }
         }
     }
 }

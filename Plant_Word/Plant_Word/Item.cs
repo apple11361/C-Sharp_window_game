@@ -42,7 +42,8 @@ namespace Plant_Word
                 item_btn[i].BackColor = Color.Transparent;
                 item_btn[i].FlatStyle = FlatStyle.Popup;
                 item_btn[i].TextAlign = ContentAlignment.BottomLeft;
-                //item_btn[i].Click += new EventHandler(item_btn_Click);
+                item_btn[i].Name = "-1";
+                item_btn[i].Click += new EventHandler(item_btn_Click);
                 this.flowLayoutPanel1.Controls.Add(item_btn[i]);
             }
         }
@@ -56,7 +57,7 @@ namespace Plant_Word
             {
                 for (; j < 100; j++)
                 {
-                    if (((Form1)(this.Owner)).my_item[j] != 0)
+                    if (((Form1)(this.Owner)).my_item[j] > 0)
                     {
                         if (j >= 2 && j <= 27)      //2~27是種子
                         {
@@ -67,18 +68,36 @@ namespace Plant_Word
                             break;
                         }
                     }
+                    else
+                    {
+                        item_btn[i].Name = "-1";
+                        item_btn[i].Image = null;
+                        item_btn[i].Text = null;
+                    }
                 }
             }
         }
 
         /*****************道具被點擊****************/
-        private void pot_btn_Click(object sender, EventArgs e)
+        private void item_btn_Click(object sender, EventArgs e)
         {
             int item_id = int.Parse(((Button)sender).Name);
+            int click_button_id = ((Form1)(this.Owner)).item_click_flag;
 
-            if(item_id >= 2 && item_id<= 27)               //2~27是種子
+            if (click_button_id == -1)                              //不是由花盆觸發
+                return;
+
+            if (((Form1)(this.Owner)).pot[click_button_id] != 0)    //已經有種了
+                return;
+
+            if (item_id >= 2 && item_id<= 27)                       //2~27是種子
             {
+                ((Form1)(this.Owner)).pot[click_button_id] = item_id;
+                ((Form1)(this.Owner)).fresh_pot();
 
+                ((Form1)(this.Owner)).my_item[item_id]--;           //道具欄數量減少
+                load();                                             //刷新畫面
+                this.Close();                                       //有種植自動關閉視窗
             }
         }
     }
