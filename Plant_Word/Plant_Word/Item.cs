@@ -42,7 +42,7 @@ namespace Plant_Word
                 item_btn[i].BackColor = Color.Transparent;
                 item_btn[i].FlatStyle = FlatStyle.Popup;
                 item_btn[i].TextAlign = ContentAlignment.BottomLeft;
-                //item_btn[i].Click += new EventHandler(pot_btn_Click);
+                //item_btn[i].Click += new EventHandler(item_btn_Click);
                 this.flowLayoutPanel1.Controls.Add(item_btn[i]);
             }
         }
@@ -58,8 +58,9 @@ namespace Plant_Word
                 {
                     if (((Form1)(this.Owner)).my_item[j] != 0)
                     {
-                        if (j >= 2 && j <= 27)
+                        if (j >= 2 && j <= 27)      //2~27是種子
                         {
+                            item_btn[i].Name = j.ToString();
                             item_btn[i].Image = ((Form1)this.Owner).item_img[0];
                             item_btn[i].Text = ((Form1)(this.Owner)).all_item_name[j] + "種子  " + ((Form1)(this.Owner)).my_item[j].ToString() + "個";
                             j++;
@@ -67,6 +68,17 @@ namespace Plant_Word
                         }
                     }
                 }
+            }
+        }
+
+        /*****************道具被點擊****************/
+        private void pot_btn_Click(object sender, EventArgs e)
+        {
+            int item_id = int.Parse(((Button)sender).Name);
+
+            if(item_id >= 2 && item_id<= 27)               //2~27是種子
+            {
+
             }
         }
     }

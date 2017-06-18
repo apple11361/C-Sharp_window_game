@@ -65,6 +65,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Quest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Quest.Designer.cs">
+      <DependentUpon>Quest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Store.cs">
       <SubType>Form</SubType>
     </Compile>

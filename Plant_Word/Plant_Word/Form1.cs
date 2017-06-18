@@ -161,7 +161,7 @@ namespace Plant_Word
         /********任務被點擊*********/
         private void Quest_Click(object sender, EventArgs e)
         {
-
+            quest_form.ShowDialog();
         }
 
         /********道具被點擊*********/
