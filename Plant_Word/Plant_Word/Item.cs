@@ -55,6 +55,11 @@ namespace Plant_Word
             /****************load my_item***************/
             for (i = 0, j = 0; i < item_num; i++)
             {
+
+                item_btn[i].Name = "-1";
+                item_btn[i].Image = null;
+                item_btn[i].Text = null;
+
                 for (; j < 100; j++)
                 {
                     if (((Form1)(this.Owner)).my_item[j] > 0)
@@ -75,12 +80,6 @@ namespace Plant_Word
                             j++;
                             break;
                         }
-                    }
-                    else
-                    {
-                        item_btn[i].Name = "-1";
-                        item_btn[i].Image = null;
-                        item_btn[i].Text = null;
                     }
                 }
             }

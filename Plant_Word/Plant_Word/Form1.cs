@@ -161,8 +161,8 @@ namespace Plant_Word
             my_item[3] = 3;
             my_item[5] = 1;
             my_item[55] = 1;
-            my_item[62] = 1;
-            my_item[71] = 1;
+            my_item[62] = 2;
+            my_item[71] = 3;
             my_item[57] = 1;
             my_quest[1] = 1;
             my_quest[2] = 1;

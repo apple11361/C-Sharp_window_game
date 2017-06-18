@@ -57,6 +57,7 @@ namespace Plant_Word
                 quest_btn[i].Enabled = false;
                 quest_btn[i].Visible = false;
                 quest_btn[i].Name = i.ToString();
+                quest_btn[i].Click += new EventHandler(quest_btn_Click);
                 quest_panel[i].Controls.Add(quest_btn[i]);
             }
 
@@ -132,6 +133,34 @@ namespace Plant_Word
                 else
                     return false;
             }
+        }
+
+        /*****************完成被點擊****************/
+        private void quest_btn_Click(object sender, EventArgs e)
+        {
+            int i;
+            int[] char_num = new int[26];
+            char[] quest_char = new char[1];
+
+            int quest_id = int.Parse(((Button)sender).Name);
+            string quest_str = (((Form1)(this.Owner)).quest_list[quest_id]);
+
+            ((Form1)(this.Owner)).my_quest[quest_id] = 0;
+            using (StringReader sr = new StringReader(quest_str))
+            {
+                for (i = 0; i < quest_str.Length; i++)
+                {
+                    sr.Read(quest_char, 0, 1);
+                    char_num[Convert.ToInt32(quest_char[0]) - Convert.ToInt32('a')]++;
+                }
+
+                for (i = 0; i < 26; i++)
+                {
+                    ((Form1)this.Owner).my_item[i + 54] -= char_num[i];
+                }
+            }
+
+            load();
         }
     }
 }
