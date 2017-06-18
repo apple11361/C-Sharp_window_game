@@ -17,6 +17,7 @@ namespace Plant_Word
 
         Item item_form = new Item();                        //道具欄視窗
         Store store_form = new Store();                     //商店視窗
+        Quest quest_form = new Quest();                     //任務視窗
 
         /**********main_window***********/
         public int money;                                   //金錢
@@ -41,6 +42,7 @@ namespace Plant_Word
             /**********set form owner*********/
             item_form.Owner = this;
             store_form.Owner = this;
+            quest_form.Owner = this;
 
             /************load pot************/
             for (i=0;i<12;i++)
