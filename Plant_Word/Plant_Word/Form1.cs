@@ -12,17 +12,17 @@ namespace Plant_Word
 {
     public partial class Form1 : Form
     {
-        public
-        Image[] item_img = new Image[1000];     //所有道具圖片
+        public Image[] item_img = new Image[1000];          //所有道具圖片
+        public string[] all_item_name = new string[100];    //所有道具名稱
 
-        Item item_form = new Item();            //道具欄視窗
-        Store store_form = new Store();         //商店視窗
+        Item item_form = new Item();                        //道具欄視窗
+        Store store_form = new Store();                     //商店視窗
 
         /**********main_window***********/
-        public
-        int money;                              //金錢
-        int[] pot = new int[12];                //記錄花盆內容
-        Button[] pot_btn = new Button[12];      //顯示花盆內容
+        public int money;                                   //金錢
+        public int[] my_item = new int[100];                //擁有道具列表
+        int[] pot = new int[12];                            //記錄花盆內容
+        Button[] pot_btn = new Button[12];                  //顯示花盆內容
 
         public Form1()
         {
@@ -112,8 +112,41 @@ namespace Plant_Word
             item_img[52] = Image.FromFile("../../images/item/y2.png");
             item_img[53] = Image.FromFile("../../images/item/z2.png");
 
+            /*************load item_name*************/
+            all_item_name[2] = "A";
+            all_item_name[3] = "B";
+            all_item_name[4] = "C";
+            all_item_name[5] = "D";
+            all_item_name[6] = "E";
+            all_item_name[7] = "F";
+            all_item_name[8] = "G";
+            all_item_name[9] = "H";
+            all_item_name[10] = "I";
+            all_item_name[11] = "J";
+            all_item_name[12] = "K";
+            all_item_name[13] = "L";
+            all_item_name[14] = "M";
+            all_item_name[15] = "N";
+            all_item_name[16] = "O";
+            all_item_name[17] = "P";
+            all_item_name[18] = "Q";
+            all_item_name[19] = "R";
+            all_item_name[20] = "S";
+            all_item_name[21] = "T";
+            all_item_name[22] = "U";
+            all_item_name[23] = "V";
+            all_item_name[24] = "W";
+            all_item_name[25] = "X";
+            all_item_name[26] = "Y";
+            all_item_name[27] = "Z";
+
+
             /*************load data*************/
             money = 5000;
+            my_item[2] = 2;
+            my_item[3] = 3;
+            my_item[5] = 1;
+
 
         }
 
@@ -132,7 +165,7 @@ namespace Plant_Word
         /********道具被點擊*********/
         private void Item_Click(object sender, EventArgs e)
         {
-
+            item_form.ShowDialog();
         }
 
         /*********花盆被點擊**********/

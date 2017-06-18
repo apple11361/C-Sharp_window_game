@@ -24,11 +24,12 @@ namespace Plant_Word
         public Store()
         {
             InitializeComponent();
+            init();
         }
 
         private void Store_Load(object sender, EventArgs e)
         {
-            init();
+            load();
         }
 
         void init()
@@ -36,7 +37,7 @@ namespace Plant_Word
             int i;
 
             /**********************************store**********************************/
-            /************load panel*************/
+            /************init panel*************/
             for (i = 0; i < 26; i++)
             {
                 store_panel[i] = new Panel();
@@ -48,7 +49,7 @@ namespace Plant_Word
                 flowLayoutPanel1.Controls.Add(store_panel[i]);
             }
 
-            /************load button*************/
+            /************init button*************/
             for (i = 0; i < 26; i++)
             {
                 store_btn[i] = new Button();
@@ -56,14 +57,12 @@ namespace Plant_Word
                 store_btn[i].Width = 70;
                 store_btn[i].Location = new Point(9, 9);
                 store_btn[i].BackColor = Color.Transparent;
-                store_btn[i].Image = ((Form1)this.Owner).item_img[0];
                 store_btn[i].FlatStyle = FlatStyle.Popup;
                 store_btn[i].Name = i.ToString();
-                //store_btn[i].Click += new EventHandler(store_btn_Click);
                 store_panel[i].Controls.Add(store_btn[i]);
             }
 
-            /************load label*************/
+            /************init label*************/
             for (i = 0; i < 26; i++)
             {
                 store_label[i, 0] = new Label();
@@ -72,7 +71,7 @@ namespace Plant_Word
                 store_label[i, 0].Height = 15;
                 store_label[i, 0].Width = 100;
                 store_label[i, 0].Location = new Point(90, 25);
-                store_label[i, 0].Text = "字母"+Convert.ToChar(i+65)+"的種子";
+                store_label[i, 0].Text = "字母" + Convert.ToChar(i + 65) + "的種子";
                 store_panel[i].Controls.Add(store_label[i, 0]);
 
                 store_label[i, 1].Height = 15;
@@ -82,8 +81,8 @@ namespace Plant_Word
                 store_panel[i].Controls.Add(store_label[i, 1]);
             }
 
-            /**********************************item**********************************/
-            /************load panel*************/
+            /**********************************item***********************************/
+            /************init panel*************/
             for (i = 0; i < 26; i++)
             {
                 item_panel[i] = new Panel();
@@ -95,7 +94,7 @@ namespace Plant_Word
                 flowLayoutPanel2.Controls.Add(item_panel[i]);
             }
 
-            /************load image*************/
+            /************init image*************/
             for (i = 0; i < 26; i++)
             {
                 item_image[i] = new Label();
@@ -103,14 +102,13 @@ namespace Plant_Word
                 item_image[i].Width = 70;
                 item_image[i].Location = new Point(9, 9);
                 item_image[i].BackColor = Color.Transparent;
-                item_image[i].Image = ((Form1)this.Owner).item_img[0];
                 item_image[i].FlatStyle = FlatStyle.Popup;
                 item_image[i].Name = i.ToString();
                 //store_btn[i].Click += new EventHandler(store_btn_Click);
                 item_panel[i].Controls.Add(item_image[i]);
             }
 
-            /************load label*************/
+            /************init label*************/
             for (i = 0; i < 26; i++)
             {
                 item_label[i, 0] = new Label();
@@ -119,17 +117,15 @@ namespace Plant_Word
                 item_label[i, 0].Height = 15;
                 item_label[i, 0].Width = 100;
                 item_label[i, 0].Location = new Point(90, 25);
-                item_label[i, 0].Text = "道具名稱";
                 item_panel[i].Controls.Add(item_label[i, 0]);
 
                 item_label[i, 1].Height = 15;
                 item_label[i, 1].Width = 100;
                 item_label[i, 1].Location = new Point(90, 50);
-                item_label[i, 1].Text = "數量";
                 item_panel[i].Controls.Add(item_label[i, 1]);
             }
 
-            /************load money*************/
+            /************init money*************/
             FontFamily fm = new FontFamily("微軟正黑體");
             Font f = new Font(fm, 13, FontStyle.Regular);
 
@@ -137,9 +133,40 @@ namespace Plant_Word
             money.Width = 200;
             money.Location = new Point(730, 690);
             money.Font = f;
-            money.Text = "目前擁有金錢：" + ((Form1)(this.Owner)).money.ToString();
             this.Controls.Add(money);
 
+        }
+        /************************load**************************/
+        void load()
+        {
+            int i;
+
+            /**********************************store**********************************/
+            /************load button*************/
+            for (i = 0; i < 26; i++)
+            {
+                store_btn[i].Image = ((Form1)this.Owner).item_img[0];
+                //store_btn[i].Click += new EventHandler(store_btn_Click);
+            }
+
+            /**********************************item***********************************/
+            /************load image*************/
+            for (i = 0; i < 26; i++)
+            {
+                item_image[i].Image = ((Form1)this.Owner).item_img[0];
+                //store_btn[i].Click += new EventHandler(store_btn_Click);
+            }
+
+            /************load label*************/
+            for (i = 0; i < 26; i++)
+            {
+                item_label[i, 0].Text = "道具名稱";
+
+                item_label[i, 1].Text = "數量";
+            }
+
+            /************load money*************/
+            money.Text = "目前擁有金錢：" + ((Form1)(this.Owner)).money.ToString();
         }
 
 
