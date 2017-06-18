@@ -88,6 +88,9 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Quest.resx">
+      <DependentUpon>Quest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Store.resx">
       <DependentUpon>Store.cs</DependentUpon>
     </EmbeddedResource>
