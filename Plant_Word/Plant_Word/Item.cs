@@ -67,6 +67,14 @@ namespace Plant_Word
                             j++;
                             break;
                         }
+                        if(j >= 54 && j <= 79)      //54~79是長完的字母
+                        {
+                            item_btn[i].Name = j.ToString();
+                            item_btn[i].Image = ((Form1)this.Owner).item_img[j-26];
+                            item_btn[i].Text = ((Form1)(this.Owner)).all_item_name[j-52] + "字母  " + ((Form1)(this.Owner)).my_item[j].ToString() + "個";
+                            j++;
+                            break;
+                        }
                     }
                     else
                     {

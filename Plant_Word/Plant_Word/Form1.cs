@@ -14,6 +14,7 @@ namespace Plant_Word
     {
         public Image[] item_img = new Image[1000];          //所有道具圖片
         public string[] all_item_name = new string[100];    //所有道具名稱
+        public string[] quest_list = new string[100];       //所有任務
 
         Item item_form = new Item();                        //道具欄視窗
         Store store_form = new Store();                     //商店視窗
@@ -22,6 +23,7 @@ namespace Plant_Word
         /**********main_window***********/
         public int money;                                   //金錢
         public int[] my_item = new int[100];                //擁有道具列表
+        public int[] my_quest = new int[100];               //擁有任務列表
         public int[] pot = new int[12];                     //記錄花盆內容
         Button[] pot_btn = new Button[12];                  //顯示花盆內容
         public int item_click_flag = -1;                    //看看是否是從花盆觸發道具欄的
@@ -143,12 +145,27 @@ namespace Plant_Word
             all_item_name[26] = "Y";
             all_item_name[27] = "Z";
 
+            /*************load quest_list*************/
+            //只能打小寫
+            quest_list[1] = "apple";
+            quest_list[2] = "bird";
+            quest_list[3] = "cook";
+            quest_list[4] = "dirt";
+            quest_list[5] = "egg";
+            quest_list[6] = "flag";
+
 
             /*************load data*************/
             money = 5000;
             my_item[2] = 2;
             my_item[3] = 3;
             my_item[5] = 1;
+            my_item[55] = 1;
+            my_item[62] = 1;
+            my_item[71] = 1;
+            my_item[57] = 1;
+            my_quest[1] = 1;
+            my_quest[2] = 1;
 
 
         }

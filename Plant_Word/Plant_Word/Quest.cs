@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Plant_Word
 {
     public partial class Quest : Form
     {
-        public 
         Panel[] quest_panel = new Panel[5];
         Button[] quest_btn = new Button[5];
         Label[] quest_label = new Label[5];
@@ -33,8 +33,9 @@ namespace Plant_Word
         {
             FontFamily fm = new FontFamily("微軟正黑體");
             Font f = new Font(fm, 13, FontStyle.Regular);
+
             /*****init panel*****/
-            for (int i = 0; i < 2; i++) 
+            for (int i = 0; i < 5; i++) 
             {
                 quest_panel[i] = new Panel();
                 quest_panel[i].Height = 90;
@@ -44,7 +45,7 @@ namespace Plant_Word
             }
 
             /*****init button*****/
-            for (int i = 0; i < 2; i++) 
+            for (int i = 0; i < 5; i++) 
             {
                 quest_btn[i] = new Button();
                 quest_btn[i].Height = 70;
@@ -54,18 +55,19 @@ namespace Plant_Word
                 quest_btn[i].Text = "完成";
                 quest_btn[i].Font = f;
                 quest_btn[i].Enabled = false;
+                quest_btn[i].Visible = false;
                 quest_btn[i].Name = i.ToString();
                 quest_panel[i].Controls.Add(quest_btn[i]);
             }
 
 
             /*****init label*****/
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 5; i++)
             {
                 quest_label[i] = new Label();
 
                 quest_label[i].Height = 30;
-                quest_label[i].Width = 100;
+                quest_label[i].Width = 200;
                 quest_label[i].Font = f;
                 quest_label[i].Location = new Point(15, 15);
                 quest_panel[i].Controls.Add(quest_label[i]);
@@ -74,18 +76,62 @@ namespace Plant_Word
 
         void load()
         {
-            /*****load button*****/
-            for (int i = 0; i < 2; i++)
-            {
+            int i, j;
 
-            }
-
-            /*****load label*****/
-            for (int i = 0; i < 2; i++)
+            /****************load my_quest***************/
+            for (i = 0, j = 0; i < 5; i++)
             {
-                quest_label[i].Text = i.ToString();
+                for (; j < 100; j++)
+                {
+                    if (((Form1)(this.Owner)).my_quest[j] > 0)
+                    {
+                        quest_btn[i].Name = j.ToString();
+                        quest_btn[i].Visible = true;
+                        if (check_quest(((Form1)(this.Owner)).quest_list[j]))
+                            quest_btn[i].Enabled = true;
+
+                        quest_label[i].Name = j.ToString();
+                        quest_label[i].Text = "完成收集單字: \"" + ((Form1)(this.Owner)).quest_list[j] + "\"";
+                        j++;
+                        break;
+                    }
+                    else
+                    {
+                        quest_btn[i].Visible = false;
+                        quest_btn[i].Name = "-1";
+
+                        quest_label[i].Name = "-1";
+                        quest_label[i].Text = null;
+                    }
+                }
             }
         }
 
+        bool check_quest(string quest)
+        {
+            int i;
+            int[] char_num = new int[26];
+            char[] quest_char = new char[1];
+
+            using (StringReader sr = new StringReader(quest))
+            {
+                for(i=0;i<quest.Length;i++)
+                {
+                    sr.Read(quest_char, 0, 1);
+                    char_num[Convert.ToInt32(quest_char[0]) - Convert.ToInt32('a')]++;
+                }
+
+                for(i=0;i<26;i++)
+                {
+                    if (((Form1)this.Owner).my_item[i + 54] < char_num[i])
+                        break;
+                }
+
+                if (i == 26)
+                    return true;
+                else
+                    return false;
+            }
+        }
     }
 }
