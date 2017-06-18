@@ -16,9 +16,9 @@ namespace Plant_Word
         Panel[] store_panel = new Panel[26];
         Button[] store_btn = new Button[26];
         Label[,] store_label = new Label[26, 2];
-        Panel[] item_panel = new Panel[26];
-        Label[] item_image = new Label[26];
-        Label[,] item_label = new Label[26, 2];
+        Panel[] item_panel = new Panel[36];
+        Label[] item_image = new Label[36];
+        Label[,] item_label = new Label[36, 2];
         Label money = new Label();
 
         public Store()
@@ -45,7 +45,6 @@ namespace Plant_Word
                 store_panel[i].Width = 200;
                 store_panel[i].BackColor = SystemColors.AppWorkspace;
                 store_panel[i].MouseEnter += flowLayoutPanel1_MouseEnter;
-                //store_panel[i].Location = new Point(15 + i / 2 * 140, 340 + i % 2 * 110);
                 flowLayoutPanel1.Controls.Add(store_panel[i]);
             }
 
@@ -60,6 +59,7 @@ namespace Plant_Word
                 store_btn[i].FlatStyle = FlatStyle.Popup;
                 store_btn[i].Name = i.ToString();
                 store_panel[i].Controls.Add(store_btn[i]);
+                store_btn[i].Click += new EventHandler(store_btn_Click);
             }
 
             /************init label*************/
@@ -83,19 +83,18 @@ namespace Plant_Word
 
             /**********************************item***********************************/
             /************init panel*************/
-            for (i = 0; i < 26; i++)
+            for (i = 0; i < 36; i++)
             {
                 item_panel[i] = new Panel();
                 item_panel[i].Height = 90;
                 item_panel[i].Width = 200;
                 item_panel[i].BackColor = SystemColors.AppWorkspace;
                 item_panel[i].MouseEnter += flowLayoutPanel2_MouseEnter;
-                //item_panel[i].Location = new Point(15 + i / 2 * 140, 340 + i % 2 * 110);
                 flowLayoutPanel2.Controls.Add(item_panel[i]);
             }
 
             /************init image*************/
-            for (i = 0; i < 26; i++)
+            for (i = 0; i < 36; i++)
             {
                 item_image[i] = new Label();
                 item_image[i].Height = 70;
@@ -104,12 +103,11 @@ namespace Plant_Word
                 item_image[i].BackColor = Color.Transparent;
                 item_image[i].FlatStyle = FlatStyle.Popup;
                 item_image[i].Name = i.ToString();
-                //store_btn[i].Click += new EventHandler(store_btn_Click);
                 item_panel[i].Controls.Add(item_image[i]);
             }
 
             /************init label*************/
-            for (i = 0; i < 26; i++)
+            for (i = 0; i < 36; i++)
             {
                 item_label[i, 0] = new Label();
                 item_label[i, 1] = new Label();
@@ -139,31 +137,43 @@ namespace Plant_Word
         /************************load**************************/
         void load()
         {
-            int i;
+            int i, j;
 
             /**********************************store**********************************/
             /************load button*************/
             for (i = 0; i < 26; i++)
             {
                 store_btn[i].Image = ((Form1)this.Owner).item_img[0];
-                //store_btn[i].Click += new EventHandler(store_btn_Click);
             }
 
             /**********************************item***********************************/
             /************load image*************/
-            for (i = 0; i < 26; i++)
+            for (i = 0, j = 0; i < 36; i++) 
             {
-                item_image[i].Image = ((Form1)this.Owner).item_img[0];
-                //store_btn[i].Click += new EventHandler(store_btn_Click);
+                for (; j < 100; j++) 
+                {
+                    if (((Form1)(this.Owner)).my_item[j] > 0)
+                    {
+                        if (j >= 2 && j <= 27)      //2~27是種子
+                        {
+                            item_image[i].Name = j.ToString();
+                            item_image[i].Image = ((Form1)this.Owner).item_img[0];
+                            /*****load label*****/
+                            item_label[i, 0].Text = ((Form1)(this.Owner)).all_item_name[j] + "種子";
+                            item_label[i, 1].Text = ((Form1)(this.Owner)).my_item[j].ToString() + "個";
+                            j++;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        item_image[i].Name = "-1";
+                        item_image[i].Image = null;
+                        item_image[i].Text = null;
+                    }
+                }
             }
 
-            /************load label*************/
-            for (i = 0; i < 26; i++)
-            {
-                item_label[i, 0].Text = "道具名稱";
-
-                item_label[i, 1].Text = "數量";
-            }
 
             /************load money*************/
             money.Text = "目前擁有金錢：" + ((Form1)(this.Owner)).money.ToString();
@@ -179,6 +189,22 @@ namespace Plant_Word
         private void flowLayoutPanel2_MouseEnter(object sender, EventArgs e)
         {
             flowLayoutPanel2.Focus();
+        }
+
+        /*****btn click*****/
+        private void store_btn_Click(object sender, EventArgs e)
+        {
+            int clicked = int.Parse(((Button)sender).Name);
+            if (((Form1)(this.Owner)).money <= 0) 
+            {
+                //沒錢 QQ
+            }
+            else
+            {
+                ((Form1)(this.Owner)).my_item[clicked + 2]++;
+                ((Form1)(this.Owner)).money -= 200;
+                load();
+            }
         }
     }
 }
