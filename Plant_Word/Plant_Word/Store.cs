@@ -182,6 +182,12 @@ namespace Plant_Word
             /************load image*************/
             for (i = 0, j = 0; i < item_num; i++) 
             {
+                item_image[i].Name = "-1";
+                item_image[i].Image = null;
+                item_image[i].Text = null;
+                item_label[i, 0].Text = null;
+                item_label[i, 1].Text = null;
+
                 for (; j < 100; j++) 
                 {
                     if (((Form1)(this.Owner)).my_item[j] > 0)
@@ -196,6 +202,16 @@ namespace Plant_Word
                             j++;
                             break;
                         }
+                        else if (j >= 54 && j <= 79)      //54~79是長完的字母
+                        {
+                            item_image[i].Name = j.ToString();
+                            item_image[i].Image = ((Form1)this.Owner).item_img[j - 26];
+                            /*****load label*****/
+                            item_label[i, 0].Text = ((Form1)(this.Owner)).all_item_name[j - 52] + "字母";
+                            item_label[i, 1].Text = ((Form1)(this.Owner)).my_item[j].ToString() + "個";
+                            j++;
+                            break;
+                        }
                         else if(j>=80)              //道具
                         {
                             item_image[i].Name = j.ToString();
@@ -206,12 +222,6 @@ namespace Plant_Word
                             j++;
                             break;
                         }
-                    }
-                    else
-                    {
-                        item_image[i].Name = "-1";
-                        item_image[i].Image = null;
-                        item_image[i].Text = null;
                     }
                 }
             }
