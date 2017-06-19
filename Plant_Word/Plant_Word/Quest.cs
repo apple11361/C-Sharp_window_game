@@ -156,7 +156,7 @@ namespace Plant_Word
             ((Form1)(this.Owner)).money += 600;
 
             for (i=0;i<quest_id;i++)                    //越後面任務錢越多
-                ((Form1)(this.Owner)).money += 100;
+                ((Form1)(this.Owner)).money += 50;
 
             using (StringReader sr = new StringReader(quest_str))
             {

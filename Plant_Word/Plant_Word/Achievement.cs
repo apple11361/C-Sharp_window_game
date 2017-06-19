@@ -23,7 +23,7 @@ namespace Plant_Word
 
             label2.Text = "";
 
-            for(i=0;i<10;i++)
+            for(i=0;i<100;i++)
             {
                 if(((Form1)(this.Owner)).my_achievement[i]==1)
                 {

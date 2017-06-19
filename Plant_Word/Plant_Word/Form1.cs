@@ -37,6 +37,7 @@ namespace Plant_Word
         /***********事件聲音***********/
         //public SoundPlayer sp = new SoundPlayer();
         public SoundPlayer pull = new SoundPlayer();
+        public SoundPlayer select = new SoundPlayer();
         
         public Form1()
         {
@@ -54,6 +55,7 @@ namespace Plant_Word
 
             /*****事件聲音，只能.wav*****/
             pull.SoundLocation = "../../sounds/pull.wav";
+            select.SoundLocation = "../../sounds/select.wav";
             //sp.SoundLocation = "../../sounds/bgmu.wav";
             //sp.PlayLooping();
 
@@ -178,7 +180,17 @@ namespace Plant_Word
             quest_list[7] = "ridiculous";
             quest_list[8] = "delicious";
             quest_list[9] = "happy";
-            quest_list[10] = "apple";
+            quest_list[10] = "buy";
+            quest_list[11] = "come";
+            quest_list[12] = "online";
+            quest_list[13] = "give";
+            quest_list[14] = "dagger";
+            quest_list[15] = "what";
+            quest_list[16] = "time";
+            quest_list[17] = "gather";
+            quest_list[18] = "thank";
+            quest_list[19] = "tonight";
+            quest_list[20] = "apple";
 
 
 
@@ -247,24 +259,28 @@ namespace Plant_Word
         /********商店被點擊*********/
         private void Store_Click(object sender, EventArgs e)
         {
+            select.Play();
             store_form.ShowDialog();
         }
 
         /********任務被點擊*********/
         private void Quest_Click(object sender, EventArgs e)
         {
+            select.Play();
             quest_form.ShowDialog();
         }
 
         /********道具被點擊*********/
         private void Item_Click(object sender, EventArgs e)
         {
+            select.Play();
             item_form.ShowDialog();
         }
 
         /********成就被點擊*********/
         private void Achievement_Click(object sender, EventArgs e)
         {
+            select.Play();
             achievement_form.ShowDialog();
         }
 

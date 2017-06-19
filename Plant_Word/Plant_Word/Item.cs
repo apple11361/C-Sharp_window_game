@@ -13,12 +13,14 @@ namespace Plant_Word
 {
     public partial class Item : Form
     {
-        SoundPlayer push = new SoundPlayer();
         int[] item = new int[36];
         Button[] item_btn = new Button[36];
         Label money = new Label();
         int item_num = 36;                      //item 總數
 
+        /***********事件聲音***********/
+        SoundPlayer push = new SoundPlayer();
+        SoundPlayer potion = new SoundPlayer();
 
         public Item()
         {
@@ -37,6 +39,7 @@ namespace Plant_Word
 
             /*****事件聲音，只能.wav*****/
             push.SoundLocation = "../../sounds/push.wav";
+            potion.SoundLocation = "../../sounds/potion.wav";
 
             /****************init button*****************/
             for (i = 0; i < item_num; i++)
@@ -83,7 +86,7 @@ namespace Plant_Word
                         {
                             item_btn[i].Name = j.ToString();
                             item_btn[i].Image = ((Form1)this.Owner).item_img[0];
-                            item_btn[i].Text = ((Form1)(this.Owner)).all_item_name[j] + "種子  " + ((Form1)(this.Owner)).my_item[j].ToString() + "個";
+                            item_btn[i].Text = ((Form1)(this.Owner)).all_item_name[j] + "種子 " + ((Form1)(this.Owner)).my_item[j].ToString() + "個";
                             j++;
                             break;
                         }
@@ -149,6 +152,7 @@ namespace Plant_Word
                     }
 
                     ((Form1)(this.Owner)).my_item[item_id]--;           //道具欄數量減少
+                    potion.Play();
                     load();                                             //刷新畫面
                     this.Close();                                       //使用道具自動關閉視窗
                 }

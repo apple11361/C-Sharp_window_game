@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Plant_Word
 {
@@ -22,6 +23,9 @@ namespace Plant_Word
         Label[,] item_label = new Label[36, 2];
         Label money = new Label();
 
+        /***********事件聲音***********/
+        public SoundPlayer buy = new SoundPlayer();
+
         public Store()
         {
             InitializeComponent();
@@ -36,6 +40,9 @@ namespace Plant_Word
         void init()
         {
             int i;
+
+            /*****事件聲音，只能.wav*****/
+            buy.SoundLocation = "../../sounds/buy.wav";
 
             /**********************************store**********************************/
             /************init panel*************/
@@ -268,7 +275,9 @@ namespace Plant_Word
                 {
                     ((Form1)(this.Owner)).my_item[btn_index + 54]++;
                 }
+
                 ((Form1)(this.Owner)).money -= how_much;
+                buy.Play();
                 load();
             }
         }
