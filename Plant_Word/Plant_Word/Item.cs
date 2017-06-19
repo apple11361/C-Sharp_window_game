@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
 
 namespace Plant_Word
 {
     public partial class Item : Form
     {
-        public
+        SoundPlayer push = new SoundPlayer();
         int[] item = new int[36];
         Button[] item_btn = new Button[36];
         Label money = new Label();
@@ -33,6 +34,9 @@ namespace Plant_Word
         void init()
         {
             int i;
+
+            /*****事件聲音，只能.wav*****/
+            push.SoundLocation = "push.wav";
 
             /****************init button*****************/
             for (i = 0; i < item_num; i++)
@@ -127,6 +131,7 @@ namespace Plant_Word
 
                 ((Form1)(this.Owner)).my_item[item_id]--;           //道具欄數量減少
                 load();                                             //刷新畫面
+                push.Play();                                        //種植聲音
                 this.Close();                                       //有種植自動關閉視窗
             }
         }

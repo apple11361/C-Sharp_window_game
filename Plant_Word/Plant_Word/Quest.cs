@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Media;
 
 namespace Plant_Word
 {
     public partial class Quest : Form
     {
+        SoundPlayer quest_finish = new SoundPlayer();
         Panel[] quest_panel = new Panel[5];
         Button[] quest_btn = new Button[5];
         Label[] quest_label = new Label[5];
@@ -33,6 +35,9 @@ namespace Plant_Word
         {
             FontFamily fm = new FontFamily("微軟正黑體");
             Font f = new Font(fm, 13, FontStyle.Regular);
+
+            /*****事件聲音，只能.wav*****/
+            quest_finish.SoundLocation = "quest_finish.wav";
 
             /*****init panel*****/
             for (int i = 0; i < 5; i++) 
@@ -162,6 +167,7 @@ namespace Plant_Word
                 }
             }
 
+            quest_finish.Play();
             load();
         }
     }

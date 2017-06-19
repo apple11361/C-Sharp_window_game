@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Media;                     //背景音樂
+using System.Media;                     //事件聲音
+
+
 
 namespace Plant_Word
 {
@@ -29,9 +31,9 @@ namespace Plant_Word
         Button[] pot_btn = new Button[12];                  //顯示花盆內容
         public int item_click_flag = -1;                    //看看是否是從花盆觸發道具欄的
 
-        /***********背景音樂************/
-        SoundPlayer sp = new SoundPlayer();
-        
+        /***********事件聲音***********/
+        //public SoundPlayer sp = new SoundPlayer();
+        public SoundPlayer pull = new SoundPlayer();
         
         public Form1()
         {
@@ -39,17 +41,18 @@ namespace Plant_Word
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            /*****背景音樂，*只能.wav****/
-            sp.SoundLocation = "bgmu.wav";
-            sp.PlayLooping();
-
+        {         
             init();
         }
 
         public void init()
         {
             int i;
+
+            /*****事件聲音，只能.wav*****/
+            pull.SoundLocation = "pull.wav";
+            //sp.SoundLocation = "bgmu.wav";
+            //sp.PlayLooping();
 
             /*************set timer***********/
             timer1.Interval = 100;
@@ -208,16 +211,17 @@ namespace Plant_Word
         {
             int pot_index = int.Parse(((Button)sender).Name);
 
-            if (pot[pot_index] == 0)
+            if (pot[pot_index] == 0)                                //可種
             {
                 item_click_flag = int.Parse(((Button)sender).Name);
                 item_form.ShowDialog();
                 item_click_flag = -1;
             }
-            else if(pot[pot_index]>=54 && pot[pot_index] <= 79)
+            else if(pot[pot_index]>=54 && pot[pot_index] <= 79)     //可收成
             {
                 my_item[pot[pot_index]]++;
                 pot[pot_index] = 0;
+                pull.Play();
                 fresh_pot();
             }
         }
