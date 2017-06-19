@@ -3,7 +3,9 @@ A C# window game for Final Project
 
 # Image ID list:
 道具欄的種子: 0000
+
 泥土裡的種子: 0001
+
 長一半的字母A: 0002
 長一半的字母B: 0003
 長一半的字母C: 0004
