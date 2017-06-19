@@ -37,7 +37,7 @@ namespace Plant_Word
             Font f = new Font(fm, 13, FontStyle.Regular);
 
             /*****事件聲音，只能.wav*****/
-            quest_finish.SoundLocation = "quest_finish.wav";
+            quest_finish.SoundLocation = "../../sounds/quest_finish.wav";
 
             /*****init panel*****/
             for (int i = 0; i < 5; i++) 
@@ -87,6 +87,12 @@ namespace Plant_Word
             /****************load my_quest***************/
             for (i = 0, j = 0; i < 5; i++)
             {
+                quest_btn[i].Visible = false;
+                quest_btn[i].Name = "-1";
+
+                quest_label[i].Name = "-1";
+                quest_label[i].Text = null;
+
                 for (; j < 100; j++)
                 {
                     if (((Form1)(this.Owner)).my_quest[j] > 0)
@@ -95,19 +101,13 @@ namespace Plant_Word
                         quest_btn[i].Visible = true;
                         if (check_quest(((Form1)(this.Owner)).quest_list[j]))
                             quest_btn[i].Enabled = true;
+                        else
+                            quest_btn[i].Enabled = false;
 
                         quest_label[i].Name = j.ToString();
                         quest_label[i].Text = "完成收集單字: \"" + ((Form1)(this.Owner)).quest_list[j] + "\"";
                         j++;
                         break;
-                    }
-                    else
-                    {
-                        quest_btn[i].Visible = false;
-                        quest_btn[i].Name = "-1";
-
-                        quest_label[i].Name = "-1";
-                        quest_label[i].Text = null;
                     }
                 }
             }

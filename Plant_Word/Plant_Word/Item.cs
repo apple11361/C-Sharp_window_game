@@ -36,7 +36,7 @@ namespace Plant_Word
             int i;
 
             /*****事件聲音，只能.wav*****/
-            push.SoundLocation = "push.wav";
+            push.SoundLocation = "../../sounds/push.wav";
 
             /****************init button*****************/
             for (i = 0; i < item_num; i++)

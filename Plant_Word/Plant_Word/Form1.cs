@@ -50,8 +50,8 @@ namespace Plant_Word
             int i;
 
             /*****事件聲音，只能.wav*****/
-            pull.SoundLocation = "pull.wav";
-            //sp.SoundLocation = "bgmu.wav";
+            pull.SoundLocation = "../../sounds/pull.wav";
+            //sp.SoundLocation = "../../sounds/bgmu.wav";
             //sp.PlayLooping();
 
             /*************set timer***********/
