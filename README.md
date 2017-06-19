@@ -140,9 +140,26 @@ A C# window game for Final Project
 生長激素:  	 0080
 
 #Quest list:
-apple:	1
-bird: 	2
-cook: 	3
-dirt: 	4
-egg: 	5
-flag: 	6
+apple:		1
+bird: 		2
+cook: 		3
+dirt: 		4
+egg: 		5
+flag: 		6
+ridiculous: 7
+delicious:	8
+happy:		9
+buy:		10
+come:		11
+online:		12
+give:		13
+dagger:		14
+what:		15
+time:		16
+gather:		17
+thank:		18
+tonight:	19
+apple:		20
+			
+			
+			
