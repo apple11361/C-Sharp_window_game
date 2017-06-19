@@ -223,6 +223,12 @@ namespace Plant_Word
                 item_form.ShowDialog();
                 item_click_flag = -1;
             }
+            else if(pot[pot_index] >= 2 && pot[pot_index] <= 53)    //可用生長激素
+            {
+                item_click_flag = int.Parse(((Button)sender).Name);
+                item_form.ShowDialog();
+                item_click_flag = -1;
+            }
             else if(pot[pot_index]>=54 && pot[pot_index] <= 79)     //可收成
             {
                 my_item[pot[pot_index]]++;

@@ -117,22 +117,41 @@ namespace Plant_Word
         {
             int item_id = int.Parse(((Button)sender).Name);
             int click_button_id = ((Form1)(this.Owner)).item_click_flag;
+            int pot_state = ((Form1)(this.Owner)).pot[click_button_id];
 
-            if (click_button_id == -1)                              //不是由花盆觸發
+            if (click_button_id == -1)                                  //不是由花盆觸發
                 return;
 
-            if (((Form1)(this.Owner)).pot[click_button_id] != 0)    //已經有種了
-                return;
-
-            if (item_id >= 2 && item_id<= 27)                       //2~27是種子
+            if (pot_state == 0)     //可種
             {
-                ((Form1)(this.Owner)).pot[click_button_id] = item_id;
-                ((Form1)(this.Owner)).fresh_pot();
+                if (item_id >= 2 && item_id <= 27)                      //2~27是種子
+                {
+                    ((Form1)(this.Owner)).pot[click_button_id] = item_id;
+                    ((Form1)(this.Owner)).fresh_pot();
 
-                ((Form1)(this.Owner)).my_item[item_id]--;           //道具欄數量減少
-                load();                                             //刷新畫面
-                push.Play();                                        //種植聲音
-                this.Close();                                       //有種植自動關閉視窗
+                    ((Form1)(this.Owner)).my_item[item_id]--;           //道具欄數量減少
+                    load();                                             //刷新畫面
+                    push.Play();                                        //種植聲音
+                    this.Close();                                       //有種植自動關閉視窗
+                }
+            }
+            else if (pot_state >= 2 && pot_state <= 53)                  //可用生長激素
+            {
+                if (item_id == 80)                                      //80是生長激素
+                {
+                    if (pot_state >= 2 && pot_state <= 27)
+                    {
+                        ((Form1)(this.Owner)).pot[click_button_id] += 52;
+                    }
+                    else
+                    {
+                        ((Form1)(this.Owner)).pot[click_button_id] += 26;
+                    }
+
+                    ((Form1)(this.Owner)).my_item[item_id]--;           //道具欄數量減少
+                    load();                                             //刷新畫面
+                    this.Close();                                       //使用道具自動關閉視窗
+                }
             }
         }
     }
