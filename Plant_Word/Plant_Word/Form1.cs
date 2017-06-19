@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;                     //事件聲音
+using System.IO;                        //遊戲存檔
 
 
 
@@ -22,11 +23,13 @@ namespace Plant_Word
         Item item_form = new Item();                        //道具欄視窗
         Store store_form = new Store();                     //商店視窗
         Quest quest_form = new Quest();                     //任務視窗
+        Achievement achievement_form = new Achievement();   //成就視窗
 
         /**********main_window***********/
         public int money;                                   //金錢
         public int[] my_item = new int[100];                //擁有道具列表
         public int[] my_quest = new int[100];               //擁有任務列表
+        public int[] my_achievement = new int[100];         //解過的成就
         public int[] pot = new int[12];                     //記錄花盆內容
         Button[] pot_btn = new Button[12];                  //顯示花盆內容
         public int item_click_flag = -1;                    //看看是否是從花盆觸發道具欄的
@@ -62,6 +65,7 @@ namespace Plant_Word
             item_form.Owner = this;
             store_form.Owner = this;
             quest_form.Owner = this;
+            achievement_form.Owner = this;
 
             /************load pot************/
             for (i=0;i<12;i++)
@@ -165,7 +169,7 @@ namespace Plant_Word
 
             /*************load quest_list*************/
             //只能打小寫
-            quest_list[1] = "apple";
+            quest_list[1] = "QQ";
             quest_list[2] = "bird";
             quest_list[3] = "cook";
             quest_list[4] = "dirt";
@@ -174,23 +178,69 @@ namespace Plant_Word
             quest_list[7] = "ridiculous";
             quest_list[8] = "delicious";
             quest_list[9] = "happy";
-            quest_list[10] = "QQ";
-            
+            quest_list[10] = "apple";
+
 
 
             /*************load data*************/
-            money = 5000;
-            my_item[2] = 2;
-            my_item[3] = 3;
-            my_item[5] = 1;
-            my_item[55] = 1;
-            my_item[62] = 2;
-            my_item[71] = 3;
-            my_item[57] = 1;
-            my_quest[1] = 1;
-            my_quest[2] = 1;
-            my_quest[10] = 1;
+            FileStream fs;
+            if (!File.Exists("game_file.txt"))              //尚未有檔案的話要創檔
+            {
+                fs = File.Create("game_file.txt");
+                fs.Close();
 
+                /*****第一次玩遊戲的設定*****/
+                money = 5000;
+                my_item[2] = 2;
+                my_item[3] = 3;
+                my_item[5] = 1;
+                my_item[55] = 1;
+                my_item[62] = 2;
+                my_item[71] = 3;
+                my_item[57] = 1;
+                my_quest[1] = 1;
+                my_quest[2] = 1;
+                my_quest[10] = 1;
+            }
+            else                                            //讀紀錄
+            {
+                StreamReader sr = new StreamReader("game_file.txt"); //讀入排行榜
+                string temp;
+
+                /*****金錢*****/
+                temp = sr.ReadLine();
+                money = Convert.ToInt32(temp);
+
+                /*****擁有道具*****/
+                for(i=0;i<100;i++)
+                {
+                    temp = sr.ReadLine();
+                    my_item[i] = Convert.ToInt32(temp);
+                }
+
+                /*****擁有任務*****/
+                for (i = 0; i < 100; i++)
+                {
+                    temp = sr.ReadLine();
+                    my_quest[i] = Convert.ToInt32(temp);
+                }
+
+                /*****擁有成就*****/
+                for (i = 0; i < 100; i++)
+                {
+                    temp = sr.ReadLine();
+                    my_achievement[i] = Convert.ToInt32(temp);
+                }
+
+                /*****花盆狀態*****/
+                for (i = 0; i < 12; i++)
+                {
+                    temp = sr.ReadLine();
+                    pot[i] = Convert.ToInt32(temp);
+                }
+
+                sr.Close();
+            }
 
         }
 
@@ -210,6 +260,12 @@ namespace Plant_Word
         private void Item_Click(object sender, EventArgs e)
         {
             item_form.ShowDialog();
+        }
+
+        /********成就被點擊*********/
+        private void Achievement_Click(object sender, EventArgs e)
+        {
+            achievement_form.ShowDialog();
         }
 
         /*********花盆被點擊**********/
@@ -237,12 +293,7 @@ namespace Plant_Word
                 fresh_pot();
             }
         }
-
-        private void Achievement_Click(object sender, EventArgs e)
-        {
-
-        }
-
+    
         public void fresh_pot()
         {
             int i;
@@ -283,13 +334,57 @@ namespace Plant_Word
                 {
                     if_grow = ran.Next(10000);
 
-                    if(if_grow<500)                     //成長速度, 5
+                    if(if_grow<5)                     //成長速度, 5
                     {
                         pot[i] += 26;
                     }
                 }
             }
             fresh_pot();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            int i;
+
+            /*********存入遊戲檔案*********/
+            StreamWriter sw = new StreamWriter("game_file.txt"); //讀入排行榜
+            string temp;
+
+            /*****金錢*****/
+            temp = money.ToString();
+            sw.WriteLine(temp);
+
+            /*****擁有道具*****/
+            for (i = 0; i < 100; i++)
+            {
+                temp = my_item[i].ToString();
+                sw.WriteLine(temp);
+            }
+
+            /*****擁有任務*****/
+            for (i = 0; i < 100; i++)
+            {
+                temp = my_quest[i].ToString();
+                sw.WriteLine(temp);
+            }
+
+            /*****擁有成就*****/
+            for (i = 0; i < 100; i++)
+            {
+                temp = my_achievement[i].ToString();
+                sw.WriteLine(temp);
+            }
+
+            /*****花盆狀態*****/
+            for (i = 0; i < 12; i++)
+            {
+                temp = pot[i].ToString();
+                sw.WriteLine(temp);
+            }
+
+            sw.Close();
+
         }
     }
 }
