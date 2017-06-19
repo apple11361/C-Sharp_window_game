@@ -171,6 +171,11 @@ namespace Plant_Word
             quest_list[4] = "dirt";
             quest_list[5] = "egg";
             quest_list[6] = "flag";
+            quest_list[7] = "ridiculous";
+            quest_list[8] = "delicious";
+            quest_list[9] = "happy";
+            quest_list[10] = "QQ";
+            
 
 
             /*************load data*************/
@@ -184,6 +189,7 @@ namespace Plant_Word
             my_item[57] = 1;
             my_quest[1] = 1;
             my_quest[2] = 1;
+            my_quest[10] = 1;
 
 
         }

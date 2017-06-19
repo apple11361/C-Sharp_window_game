@@ -116,6 +116,7 @@ namespace Plant_Word
         bool check_quest(string quest)
         {
             int i;
+            quest = quest.ToLower();
             int[] char_num = new int[26];
             char[] quest_char = new char[1];
 
@@ -148,7 +149,7 @@ namespace Plant_Word
             char[] quest_char = new char[1];
 
             int quest_id = int.Parse(((Button)sender).Name);
-            string quest_str = (((Form1)(this.Owner)).quest_list[quest_id]);
+            string quest_str = (((Form1)(this.Owner)).quest_list[quest_id]).ToLower();
 
             ((Form1)(this.Owner)).my_quest[quest_id] = 0;
             ((Form1)(this.Owner)).money += 1000;
