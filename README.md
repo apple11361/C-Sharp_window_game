@@ -147,7 +147,7 @@ dirt: 		4
 egg: 		5  
 flag: 		6  
 ridiculous: 	7  
-delicious:	8 
+delicious:	8  
 happy:		9  
 buy:		10  
 come:		11  
