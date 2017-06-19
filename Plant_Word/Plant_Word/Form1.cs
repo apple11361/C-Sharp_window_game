@@ -42,6 +42,10 @@ namespace Plant_Word
         {
             int i;
 
+            /*************set timer***********/
+            timer1.Interval = 100;
+            timer1.Enabled = true;
+
             /**********set form owner*********/
             item_form.Owner = this;
             store_form.Owner = this;
@@ -191,11 +195,19 @@ namespace Plant_Word
         /*********花盆被點擊**********/
         private void pot_btn_Click(object sender, EventArgs e)
         {
-            if(pot[int.Parse(((Button)sender).Name)] == 0)
+            int pot_index = int.Parse(((Button)sender).Name);
+
+            if (pot[pot_index] == 0)
             {
                 item_click_flag = int.Parse(((Button)sender).Name);
                 item_form.ShowDialog();
                 item_click_flag = -1;
+            }
+            else if(pot[pot_index]>=54 && pot[pot_index] <= 79)
+            {
+                my_item[pot[pot_index]]++;
+                pot[pot_index] = 0;
+                fresh_pot();
             }
         }
 
@@ -225,7 +237,32 @@ namespace Plant_Word
                         pot_btn[i].Image = item_img[pot[i] - 26];
                     }
                 }
+                else                                        //沒種東西
+                {
+                    pot_btn[i].Image = null;
+                }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int i;
+            int if_grow;
+            Random ran = new Random(Guid.NewGuid().GetHashCode());
+
+            for (i=0;i<12;i++)
+            {
+                if(pot[i]>0 && pot[i]<54)
+                {
+                    if_grow = ran.Next(10000);
+
+                    if(if_grow<500)                     //成長速度
+                    {
+                        pot[i] += 26;
+                    }
+                }
+            }
+            fresh_pot();
         }
     }
 }

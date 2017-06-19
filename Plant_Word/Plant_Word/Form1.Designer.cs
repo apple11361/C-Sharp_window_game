@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.Store = new System.Windows.Forms.Button();
             this.Quest = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.Achievement = new System.Windows.Forms.Button();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.farm_panel = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,6 +108,10 @@
             this.farm_panel.Size = new System.Drawing.Size(800, 550);
             this.farm_panel.TabIndex = 6;
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -130,6 +136,7 @@
         private System.Windows.Forms.Button Achievement;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel farm_panel;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
