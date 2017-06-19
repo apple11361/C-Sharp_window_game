@@ -212,7 +212,7 @@ namespace Plant_Word
                 my_item[57] = 1;
                 my_quest[1] = 1;
                 my_quest[2] = 1;
-                my_quest[10] = 1;
+
             }
             else                                            //讀紀錄
             {

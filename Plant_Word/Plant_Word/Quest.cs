@@ -152,6 +152,7 @@ namespace Plant_Word
             string quest_str = (((Form1)(this.Owner)).quest_list[quest_id]).ToLower();
 
             ((Form1)(this.Owner)).my_quest[quest_id] = 0;
+            ((Form1)(this.Owner)).my_quest[quest_id+2] = 1;
             ((Form1)(this.Owner)).my_achievement[quest_id] = 1;
             ((Form1)(this.Owner)).money += 600;
 
