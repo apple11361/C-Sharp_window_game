@@ -15,6 +15,7 @@ namespace Plant_Word
         public
         int[] item = new int[36];
         Button[] item_btn = new Button[36];
+        Label money = new Label();
         int item_num = 36;                      //item 總數
 
 
@@ -46,6 +47,16 @@ namespace Plant_Word
                 item_btn[i].Click += new EventHandler(item_btn_Click);
                 this.flowLayoutPanel1.Controls.Add(item_btn[i]);
             }
+
+            /************init money*************/
+            FontFamily fm = new FontFamily("微軟正黑體");
+            Font f = new Font(fm, 13, FontStyle.Regular);
+
+            money.Height = 25;
+            money.Width = 200;
+            money.Location = new Point(550, 50);
+            money.Font = f;
+            this.Controls.Add(money);
         }
 
         void load()
@@ -64,7 +75,7 @@ namespace Plant_Word
                 {
                     if (((Form1)(this.Owner)).my_item[j] > 0)
                     {
-                        if (j >= 2 && j <= 27)      //2~27是種子
+                        if (j >= 2 && j <= 27)          //2~27是種子
                         {
                             item_btn[i].Name = j.ToString();
                             item_btn[i].Image = ((Form1)this.Owner).item_img[0];
@@ -72,7 +83,7 @@ namespace Plant_Word
                             j++;
                             break;
                         }
-                        if(j >= 54 && j <= 79)      //54~79是長完的字母
+                        else if(j >= 54 && j <= 79)      //54~79是長完的字母
                         {
                             item_btn[i].Name = j.ToString();
                             item_btn[i].Image = ((Form1)this.Owner).item_img[j-26];
@@ -80,9 +91,21 @@ namespace Plant_Word
                             j++;
                             break;
                         }
+                        else if (j >= 80)               //道具
+                        {
+                            item_btn[i].Name = j.ToString();
+                            item_btn[i].Image = ((Form1)this.Owner).item_img[j - 26];
+                            /*****load label*****/
+                            item_btn[i].Text = ((Form1)(this.Owner)).all_item_name[j - 26] + "  " + ((Form1)(this.Owner)).my_item[j].ToString() + "個";
+                            j++;
+                            break;
+                        }
                     }
                 }
             }
+
+            /************load money*************/
+            money.Text = "目前擁有金錢：" + ((Form1)(this.Owner)).money.ToString();
         }
 
         /*****************道具被點擊****************/

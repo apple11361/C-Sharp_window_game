@@ -146,6 +146,8 @@ namespace Plant_Word
             string quest_str = (((Form1)(this.Owner)).quest_list[quest_id]);
 
             ((Form1)(this.Owner)).my_quest[quest_id] = 0;
+            ((Form1)(this.Owner)).money += 1000;
+
             using (StringReader sr = new StringReader(quest_str))
             {
                 for (i = 0; i < quest_str.Length; i++)

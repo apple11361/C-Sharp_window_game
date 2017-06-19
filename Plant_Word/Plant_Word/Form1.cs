@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;                     //背景音樂
 
 namespace Plant_Word
 {
@@ -28,6 +29,10 @@ namespace Plant_Word
         Button[] pot_btn = new Button[12];                  //顯示花盆內容
         public int item_click_flag = -1;                    //看看是否是從花盆觸發道具欄的
 
+        /***********背景音樂************/
+        SoundPlayer sp = new SoundPlayer();
+        
+        
         public Form1()
         {
             InitializeComponent();
@@ -35,6 +40,10 @@ namespace Plant_Word
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            /*****背景音樂，*只能.wav****/
+            sp.SoundLocation = "bgmu.wav";
+            sp.PlayLooping();
+
             init();
         }
 
@@ -120,6 +129,7 @@ namespace Plant_Word
             item_img[51] = Image.FromFile("../../images/item/x2.png");
             item_img[52] = Image.FromFile("../../images/item/y2.png");
             item_img[53] = Image.FromFile("../../images/item/z2.png");
+            item_img[54] = Image.FromFile("../../images/item/item1.png");
 
             /*************load item_name*************/
             all_item_name[2] = "A";
@@ -148,6 +158,7 @@ namespace Plant_Word
             all_item_name[25] = "X";
             all_item_name[26] = "Y";
             all_item_name[27] = "Z";
+            all_item_name[54] = "生長激素";
 
             /*************load quest_list*************/
             //只能打小寫
@@ -256,7 +267,7 @@ namespace Plant_Word
                 {
                     if_grow = ran.Next(10000);
 
-                    if(if_grow<500)                     //成長速度
+                    if(if_grow<500)                     //成長速度, 5
                     {
                         pot[i] += 26;
                     }
